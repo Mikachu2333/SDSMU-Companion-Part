@@ -1,0 +1,46 @@
+# Complie
+*.acn
+*.acr
+*.alg
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.glg
+*.glo
+*.gls
+*.idx
+*.ind
+*.ist
+*.lof
+*.log
+*.lot
+*.out
+*.synctex*
+*.toc
+*.xdv
+
+*.txt
+*.csv
+
+# latexindent
+*.bak*
+
+# powershell script
+*.ps1
+
+# diff
+*.diff
+
+# pdf
+main.pdf
+321指南_*.pdf
+特殊*.pdf
+*预览版.pdf
+*Preview*.pdf
+
+#vscode settings
+.vscode/*
+*.code-workspace
+*.Zone.Identifier

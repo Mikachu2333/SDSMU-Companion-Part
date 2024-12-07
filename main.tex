@@ -1,0 +1,149 @@
+% !TeX encoding = UTF-8 Unicode
+
+\DocumentMetadata{lang=zh-CN,pdfversion=1.7}
+\documentclass[a4paper,twoside,onecolumn,12pt,fontset=none,UTF8,notitlepage]{ctexrep}
+\usepackage{fancyhdr,titlesec}%标题、脚注格式
+\usepackage{luacolor, xcolor}%颜色
+\usepackage[soul]{lua-ul}%下划线与其他装饰
+\usepackage{graphicx}%插入图片
+\usepackage{float}%图表位置，如表格过长致横向排版已不可能，应加用adjustboxs宏包排版旋转表格
+\usepackage{tabularray,multicol}%表格排版
+\usepackage{enumitem}%列表排版
+\usepackage[a4paper, hmargin=1.5cm, top=1.5cm, bottom=2cm, headheight=0pt, ignorehead]{geometry}%页边距与排版
+\usepackage[bookmarksnumbered=true, hidelinks]{hyperref}%超链接
+\usepackage{texosquery}%获取秒数及时间
+\usepackage{datetime2}%扉页基本时间及格式
+%\usepackage{showframe}%显示页面布局与边框，仅Preview版本排查错误
+
+% 设置文档标题
+\hypersetup{%
+    pdftitle = {山二医指南（部分） SDSMU-Companion-Part},%
+    pdfauthor = {LinkChou, etc.},%
+    pdfdisplaydoctitle = true%
+}
+
+% 重设定标题与正文间距
+\ctexset{
+    chapter={
+        beforeskip=0ex,
+        afterskip=4ex
+    },
+    section={
+        beforeskip=0ex,
+        afterskip=0ex
+    },
+    subsection={
+        beforeskip=0ex,
+        afterskip=0ex
+    },
+    subsubsection={
+        beforeskip=0ex,
+        afterskip=0ex
+    }
+}
+
+% 重定义文章字体为梦源宋体（不使用思源宋体的原因是思源的行高过高）
+\setmainfont[BoldFont=Dream Han Serif CN W20.ttf]{Dream Han Serif CN W7.ttf}
+\setCJKmainfont{Dream Han Serif CN W7.ttf}[BoldFont=Dream Han Serif CN W20.ttf]
+\setCJKsansfont[BoldFont=Dream Han Serif CN W20.ttf]{Dream Han Serif CN W7.ttf}
+\setCJKmonofont[BoldFont=Dream Han Serif CN W20.ttf]{Dream Han Serif CN W7.ttf}
+
+% 段间距与行间距重设定
+\setlength{\parskip}{.75ex plus 5pt minus 8pt}
+\setlength{\lineskip}{.5ex plus 5pt minus 8pt}
+
+% 页眉页脚
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+
+% 脚注格式（无分割线）
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+% 列表样式重定义
+\setlist[enumerate,1]{
+    label=\arabic*.,
+    ref=\thesubsubsection-\theenumi
+}
+\setlist[enumerate,2]{
+    label=(\arabic*),
+    ref=\thesubsubsection-\theenumi.\theenumii
+}
+\setlist[enumerate,3]{
+    label=[\arabic*],
+    ref=\thesubsubsection-\theenumi.\theenumii.\theenumiii
+}
+\setlist[enumerate,4]{
+    label=<\arabic*>,
+    ref=\thesubsubsection-\theenumi.\theenumii.\theenumiii.\theenumiv
+}
+\setlist[enumerate]{
+    itemsep=0pt
+}
+
+%重定义表格脚注字体大小并增加“no-caption”表格样式
+\DefTblrTemplate{note-text}{default}{{\footnotesize\InsertTblrNoteText}}
+\DefTblrTemplate{remark-tag}{default}{{\footnotesize\bfseries\InsertTblrRemarkTag}}
+\DefTblrTemplate{remark-text}{default}{{\footnotesize\InsertTblrRemarkText}}
+\NewTblrTheme{no-caption}{
+    \SetTblrTemplate{caption}{empty}
+}
+
+%重定义表格表注的表现形式避免问题
+\renewcommand\TblrOverlap[1]{#1}
+
+%重定义表格换页时内容
+\DefTblrTemplate{contfoot-text}{default}{续下页}
+\DefTblrTemplate{conthead-text}{default}{（续）}
+
+% 重定义超链接与引用表现样式
+\newcommand{\uhref}[2]{%
+    \ul{\href{#1}{#2}}%
+}
+\newcommand{\uref}[1]{%
+    \ul{\ref{#1}}%
+}
+
+% 定义下划线样式
+\newcommand{\uul}[1]{%
+  \ul[bottom=\dimexpr-.7ex+1pt\relax, height=.1ex]{%
+    \ul[top=-.7ex, height=.1ex]{%
+      #1%
+    }%
+  }%
+}
+
+% 设置校徽命令
+\newcommand{\BackgroundPic}{
+    \noindent\parbox{\paperwidth}{
+        \centering
+        \vspace*{200pt}
+        \includegraphics[width=5cm]{logo.pdf}
+    }
+}
+
+% 颜色重设定
+\newcommand{\colored}[4]{
+    \textcolor[RGB]{#1,#2,#3}{#4}
+}
+
+% 时间样式重设定
+\newcommand{\CurrentCustomTime}{
+    \DTMsavenow{Compiled_time}%保存编译时间
+    \DTMfetchyear{Compiled_time}.%
+    \DTMtwodigits{\DTMfetchmonth{Compiled_time}}.%
+    \DTMtwodigits{\DTMfetchday{Compiled_time}}\quad%
+    \DTMtwodigits{\DTMfetchhour{Compiled_time}}:%
+    \DTMtwodigits{\DTMfetchminute{Compiled_time}}:%
+    \DTMtwodigits{\DTMfetchsecond{Compiled_time}}\quad%
+    GMT\DTMfetchTZhour{Compiled_time}:\DTMfetchTZminute{Compiled_time}
+}
+
+\begin{document}
+
+\input{preface.tex}
+\input{content.tex}
+
+\end{document}
