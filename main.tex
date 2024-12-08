@@ -22,7 +22,10 @@
     pdfdisplaydoctitle = true%
 }
 
-% 重设定标题与正文间距
+% 重设定标题与正文间距、格式
+\makeatletter
+\@addtoreset{section}{part}
+\makeatother
 \ctexset{
     part={
         format=\Large\bfseries\centering,
