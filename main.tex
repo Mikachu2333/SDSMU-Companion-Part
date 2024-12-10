@@ -1,13 +1,13 @@
 % !TeX encoding = UTF-8 Unicode
 
 \DocumentMetadata{lang=zh-CN,pdfversion=1.7}
-\documentclass[a4paper,twoside,onecolumn,12pt,fontset=none,UTF8,notitlepage]{ctexrep}
+\documentclass[a4paper,onecolumn,12pt,fontset=none,UTF8,titlepage]{ctexart}
 \usepackage{fancyhdr,titlesec}%标题、脚注格式
 \usepackage{luacolor, xcolor}%颜色
 \usepackage[soul]{lua-ul}%下划线与其他装饰
 \usepackage{graphicx}%插入图片
 \usepackage{float}%图表位置，如表格过长致横向排版已不可能，应加用adjustboxs宏包排版旋转表格
-\usepackage{tabularray,multicol}%表格排版
+\usepackage{tabularray}%表格排版
 \usepackage{enumitem}%列表排版
 \usepackage[a4paper, hmargin=1.5cm, top=1.5cm, bottom=2cm, headheight=0pt, ignorehead]{geometry}%页边距与排版
 \usepackage[bookmarksnumbered=true, hidelinks]{hyperref}%超链接
@@ -22,15 +22,19 @@
     pdfdisplaydoctitle = true%
 }
 
-% 重设定标题与正文间距
+% 重设定标题与正文间距、格式
+\makeatletter
+\@addtoreset{section}{part}
+\makeatother
 \ctexset{
-    chapter={
-        beforeskip=0ex,
-        afterskip=4ex
+    part={
+        format=\Large\bfseries\centering,
+        beforeskip=15pt plus 5pt,
+        afterskip=15pt plus 5pt minus 5pt,
     },
     section={
-        beforeskip=0ex,
-        afterskip=0ex
+        format=\large\bfseries,
+        name={第,节},
     },
     subsection={
         beforeskip=0ex,
