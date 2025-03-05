@@ -1,7 +1,7 @@
 % !TeX encoding = UTF-8 Unicode
 
 \DocumentMetadata{lang=zh-CN,pdfversion=1.7}
-\documentclass[a4paper,onecolumn,12pt,fontset=none,UTF8,titlepage]{ctexart}
+\documentclass[a4paper,onecolumn,12pt,fontset=none,UTF8,notitlepage]{ctexart}
 \usepackage{fancyhdr,titlesec}%标题、脚注格式
 \usepackage{luacolor, xcolor}%颜色
 \usepackage[soul]{lua-ul}%下划线与其他装饰
@@ -22,10 +22,7 @@
     pdfdisplaydoctitle = true%
 }
 
-% 重设定标题与正文间距、格式
-\makeatletter
-\@addtoreset{section}{part}
-\makeatother
+% 重设定标题与正文间距
 \ctexset{
     part={
         format=\Large\bfseries\centering,
@@ -123,7 +120,7 @@
 \newcommand{\BackgroundPic}{
     \noindent\parbox{\paperwidth}{
         \centering
-        \vspace*{350pt}
+        \vspace*{250pt}
         \includegraphics[width=5cm]{logo.pdf}
     }
 }
